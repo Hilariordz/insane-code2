@@ -1,4 +1,4 @@
-<?php
+<?php 
 require_once __DIR__ . '/config/seguridad.php';
 require_once __DIR__ . '/config/conexion.php';
 require_once __DIR__ . '/config/functions.php';
@@ -35,7 +35,7 @@ if (metodo_post_seguro()) {
             $errors[] = "El correo ya está registrado.";
         } else {
             $hash = hashPassword($password);
-            $insert = $pdo->prepare("INSERT INTO usuarios (username, email, password, creado_en) VALUES (?, ?, ?, NOW())");
+            $insert = $pdo->prepare("INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)");
             $insert->execute([$username, $email, $hash]);
             $success = true;
         }
@@ -44,6 +44,7 @@ if (metodo_post_seguro()) {
 
 $csrf = csrf_token();
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>

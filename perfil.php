@@ -151,10 +151,10 @@ $progresoPorcentaje = ($progreso / 100) * 100;
     <div class="progreso" id="barra-progreso"></div>
   </div>
 
-  <p>Retos completados: <?= $retosCompletados ?> de 50</p>
+  <p>Retos completados: <?= $retosCompletados ?> de 31</p>
   <div style="display: flex; flex-wrap: wrap; justify-content: center;">
     <?php
-    for ($i = 1; $i <= 50; $i++) {
+    for ($i = 1; $i <= 31; $i++) {
       $stmt = $pdo->prepare("SELECT COUNT(*) FROM resultados WHERE user_id = :uid AND reto_id = :rid AND puntaje > 0");
       $stmt->execute(['uid' => $user_id, 'rid' => $i]);
       $completado = $stmt->fetchColumn() > 0;
